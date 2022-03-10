@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: bussiness
+
+server:
+  port: 9112
+  servlet:
+    context-path: /business
+eureka:
+  client:
+    service-url:
+      defualtZone: http://localhost:8761/eureka/
