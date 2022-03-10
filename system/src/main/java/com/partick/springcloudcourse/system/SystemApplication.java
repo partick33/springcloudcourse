@@ -1,4 +1,4 @@
-package com.partick.springcloudcourse.server;
+package com.partick.springcloudcourse.system;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
