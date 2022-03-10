@@ -78,13 +78,17 @@
 </template>
 
 <script>
-$('body').attr('class', 'login-layout light-login');
+
 export default {
   name: 'login',
   methods:{
     login() {
       this.$router.push("/admin");
     }
+  },
+  mounted() {
+    $('body').removeClass('class', 'no-skin');
+    $('body').attr('class', 'login-layout light-login');
   }
 }
 </script>
