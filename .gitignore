@@ -1,4 +1,5 @@
 HELP.md
+server/src/main/resources/config/application.yml
 system/src/main/resources/application.yml
 target/
 !.mvn/wrapper/maven-wrapper.jar

@@ -1,11 +1,7 @@
 spring:
   application:
     name: system
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url:
-    username:
-    password:
+
 server:
   port: 9111
   servlet:
@@ -14,7 +10,3 @@ eureka:
   client:
     service-url:
       defualtZone: http://localhost:8761/eureka/
-
-logging:
-  level:
-    com.partick.springcloudcourse.system.mapper: trace
