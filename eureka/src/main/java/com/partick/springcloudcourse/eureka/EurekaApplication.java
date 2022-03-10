@@ -1,4 +1,4 @@
-package com.partick.springcloudcourse;
+package com.partick.springcloudcourse.eureka;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
