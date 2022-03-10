@@ -1,4 +1,4 @@
-package com.partick.springcloudcourse.system.Controller;
+package com.partick.springcloudcourse.system.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
