@@ -1,6 +1,6 @@
 <template>
   <div>
-    欢迎
+    欢迎进入控制中台
   </div>
 </template>
 

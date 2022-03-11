@@ -83,7 +83,7 @@ export default {
   name: 'login',
   methods:{
     login() {
-      this.$router.push("/admin");
+      this.$router.push("/welcome");
     }
   },
   mounted() {

@@ -356,10 +356,10 @@
 
         <ul class="nav nav-list">
           <li class="">
-            <a href="index.html">
+            <router-link to="/welcome">
               <i class="menu-icon fa fa-tachometer"></i>
               <span class="menu-text"> 欢迎 </span>
-            </a>
+            </router-link>
 
             <b class="arrow"></b>
           </li>
@@ -389,6 +389,28 @@
                   <i class="menu-icon fa fa-caret-right"></i>
                   权限管理
                 </a>
+
+                <b class="arrow"></b>
+              </li>
+            </ul>
+          </li>
+
+          <li class="active open">
+            <a href="#" class="dropdown-toggle">
+              <i class="menu-icon fa fa-list"></i>
+              <span class="menu-text"> 业务管理 </span>
+
+              <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+              <li class="" id="business-chapter-sidebar">
+                <router-link to="/business/chapter">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  大章管理
+                </router-link>
 
                 <b class="arrow"></b>
               </li>
@@ -455,7 +477,7 @@ export default {
   mounted() {
     $('body').removeClass('class', 'login-layout light-login');
     $('body').attr('class', 'no-skin');
-  }
+  },
 }
 </script>
 
