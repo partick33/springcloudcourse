@@ -12,6 +12,7 @@ import java.util.List;
  * @author partick_peng
  */
 @RestController
+@RequestMapping("/admin/chapter")
 public class ChapterController {
 
     @Resource
@@ -20,10 +21,5 @@ public class ChapterController {
     @RequestMapping("/searchByPage")
     public List<ChapterDTO> searchByPage() {
         return chapterService.searchByPage();
-    }
-
-    @RequestMapping("/test")
-    public Object test() {
-        return "sucess";
     }
 }

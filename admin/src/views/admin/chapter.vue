@@ -16,7 +16,7 @@
         新增
       </button>
       &nbsp;
-      <button v-on:click="list(1)" class="btn btn-white btn-default btn-round">
+      <button v-on:click="litst(1)" class="btn btn-white btn-default btn-round">
         <i class="ace-icon fa fa-refresh"></i>
         刷新
       </button>
@@ -98,5 +98,16 @@ export default {
       course: {},
     }
   },
+  methods:{
+    list(){
+      this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/searchByPage').then((response)=>{
+        console.log(response);
+        this.chapters = response.data;
+      })
+    }
+  },
+  mounted() {
+    this.list();
+  }
 }
 </script>
