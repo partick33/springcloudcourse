@@ -1,12 +1,13 @@
-package com.partick.springcloudcourse.server.domain;
+package com.partick.springcloudcourse.server.dto;
 
 import java.io.Serializable;
 
 /**
  * 大章节
+ * @author partick_peng
  * @TableName chapter
  */
-public class Chapter implements Serializable {
+public class ChapterDTO implements Serializable {
     /**
      * id
      */
@@ -96,7 +97,7 @@ public class Chapter implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Chapter other = (Chapter) that;
+        ChapterDTO other = (ChapterDTO) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getCourseId() == null ? other.getCourseId() == null : this.getCourseId().equals(other.getCourseId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
