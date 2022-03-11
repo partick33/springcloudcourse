@@ -99,14 +99,14 @@ export default {
     }
   },
   methods:{
-    list(){
-      this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/searchByPage').then((response)=>{
-        this.chapters = response.data;
+    list(data){
+      this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/searchByPage',data).then((response)=>{
+        this.chapters = response.data.list;
       })
     }
   },
   mounted() {
-    this.list();
+    this.list({page:1,size:2});
   }
 }
 </script>
