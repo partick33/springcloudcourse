@@ -9,6 +9,10 @@ spring:
           uri: http://127.0.0.1:9111
           predicates:
             - Path=/system/**
+        - id: business
+          uri: http://127.0.0.1:9112
+          predicates:
+            - Path=/business/**
 server:
   port: 9000
 eureka:
