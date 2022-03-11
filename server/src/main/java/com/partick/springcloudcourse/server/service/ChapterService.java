@@ -1,8 +1,6 @@
 package com.partick.springcloudcourse.server.service;
 
-import com.partick.springcloudcourse.server.dto.ChapterDTO;
-
-import java.util.List;
+import com.partick.springcloudcourse.server.dto.PageDTO;
 
 /**
  * @author partick_peng
@@ -10,7 +8,7 @@ import java.util.List;
 public interface ChapterService {
     /**
      * 大章节查询列表接口
-     * @return
+     * @param pageDTO
      */
-    List<ChapterDTO> searchByPage();
+    void searchByPage(PageDTO pageDTO);
 }

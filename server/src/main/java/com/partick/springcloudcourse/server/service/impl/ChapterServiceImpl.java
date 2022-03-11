@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.partick.springcloudcourse.server.domain.Chapter;
 import com.partick.springcloudcourse.server.dto.ChapterDTO;
+import com.partick.springcloudcourse.server.dto.PageDTO;
 import com.partick.springcloudcourse.server.mapper.ChapterMapper;
 import com.partick.springcloudcourse.server.service.ChapterService;
 import org.springframework.beans.BeanUtils;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author partick_peng
@@ -24,21 +24,25 @@ public class ChapterServiceImpl implements ChapterService {
 
     /**
      * 大章节查询列表接口
-     *
-     * @return
+     * @param pageDTO
      */
     @Override
-    public List<ChapterDTO> searchByPage() {
-        Page<Chapter> chapterPage = new Page<>(0, 1);
+    public void searchByPage(PageDTO pageDTO) {
+        Page<Chapter> chapterPage = new Page<>(pageDTO.getPage(), pageDTO.getSize());
         QueryWrapper<Chapter> queryWrapper = new QueryWrapper<>();
         Page<Chapter> chapterPages = chapterMapper.selectPage(chapterPage, queryWrapper);
-        List<Chapter> chapterList = chapterPages.getRecords();
+
+        pageDTO.setPage((int) chapterPages.getPages());
+        pageDTO.setSize((int) chapterPages.getSize());
+        pageDTO.setTotal((int) chapterPages.getTotal());
+
         ArrayList<ChapterDTO> chapterDtoList = new ArrayList<>();
-        chapterList.forEach(chapter -> {
+        chapterPages.getRecords().forEach(chapter -> {
             ChapterDTO chapterDTO = new ChapterDTO();
             BeanUtils.copyProperties(chapter,chapterDTO);
             chapterDtoList.add(chapterDTO);
         });
-        return chapterDtoList;
+        pageDTO.setList(chapterDtoList);
+
     }
 }
