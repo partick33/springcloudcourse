@@ -101,7 +101,6 @@ export default {
   methods:{
     list(){
       this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/searchByPage').then((response)=>{
-        console.log(response);
         this.chapters = response.data;
       })
     }
