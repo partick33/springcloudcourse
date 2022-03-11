@@ -1,6 +1,7 @@
 package com.partick.springcloudcourse.server.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.partick.springcloudcourse.server.domain.Chapter;
 import com.partick.springcloudcourse.server.dto.ChapterDTO;
 import com.partick.springcloudcourse.server.mapper.ChapterMapper;
@@ -28,8 +29,10 @@ public class ChapterServiceImpl implements ChapterService {
      */
     @Override
     public List<ChapterDTO> searchByPage() {
+        Page<Chapter> chapterPage = new Page<>(0, 1);
         QueryWrapper<Chapter> queryWrapper = new QueryWrapper<>();
-        List<Chapter> chapterList = chapterMapper.selectList(queryWrapper);
+        Page<Chapter> chapterPages = chapterMapper.selectPage(chapterPage, queryWrapper);
+        List<Chapter> chapterList = chapterPages.getRecords();
         ArrayList<ChapterDTO> chapterDtoList = new ArrayList<>();
         chapterList.forEach(chapter -> {
             ChapterDTO chapterDTO = new ChapterDTO();
