@@ -16,7 +16,7 @@
         新增
       </button>
       &nbsp;
-      <button v-on:click="litst(1)" class="btn btn-white btn-default btn-round">
+      <button v-on:click="list({page:1})" class="btn btn-white btn-default btn-round">
         <i class="ace-icon fa fa-refresh"></i>
         刷新
       </button>
@@ -89,7 +89,9 @@
 </template>
 
 <script>
+import Pagination from "../../components/pagination";
 export default {
+  components: {Pagination},
   name: "chapter",
   data: function () {
     return {
@@ -100,13 +102,18 @@ export default {
   },
   methods:{
     list(data){
+      data={
+        page: data.page,
+        size: this.$refs.pagination.size
+      }
       this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/searchByPage',data).then((response)=>{
         this.chapters = response.data.list;
+        this.$refs.pagination.render(data.page, response.data.total);
       })
     }
   },
   mounted() {
-    this.list({page:1,size:2});
+    this.list({page:1});
   }
 }
 </script>
