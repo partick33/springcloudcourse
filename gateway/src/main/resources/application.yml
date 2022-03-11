@@ -10,7 +10,7 @@ spring:
           predicates:
             - Path=/system/**
         - id: business
-          uri: http://127.0.0.1:9112
+          uri: lb://business
           predicates:
             - Path=/business/**
 server:
