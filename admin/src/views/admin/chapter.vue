@@ -35,7 +35,7 @@
 
       <tbody>
       <tr v-for="chapter in chapters">
-        <td>{{ chapter.id }}</td>
+        <td>{{ chapter.courseId }}</td>
         <td>{{ chapter.name }}</td>
         <td>
           <div class="hidden-sm hidden-xs btn-group">
@@ -71,11 +71,17 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">课程</label>
+                <label class="col-sm-2 control-label">课程id</label>
                 <div class="col-sm-10">
-                  <p class="form-control-static">{{ course.name }}</p>
+                  <input v-model="chapter.courseId" class="form-control" placeholder="名称">
                 </div>
               </div>
+<!--              <div class="form-group">-->
+<!--                <label class="col-sm-2 control-label">课程</label>-->
+<!--                <div class="col-sm-10">-->
+<!--                  <p class="form-control-static">{{ course.name }}</p>-->
+<!--                </div>-->
+<!--              </div>-->
             </form>
           </div>
           <div class="modal-footer">
@@ -101,6 +107,13 @@ export default {
     }
   },
   methods:{
+    /**
+     * 点击【新增】
+     */
+    add() {
+      this.chapter = {};
+      $("#form-modal").modal("show");
+    },
     list(data){
       data={
         page: data.page,
@@ -109,6 +122,14 @@ export default {
       this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/searchByPage',data).then((response)=>{
         this.chapters = response.data.list;
         this.$refs.pagination.render(data.page, response.data.total);
+      })
+    },
+    save() {
+      this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/save',this.chapter).then((response)=>{
+        console.log("保存大章列表结果：", response);
+        if (response.status === 200) {
+          $("#form-modal").modal("hide");
+        }
       })
     }
   },
