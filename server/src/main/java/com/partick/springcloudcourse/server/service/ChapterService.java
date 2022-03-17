@@ -1,5 +1,6 @@
 package com.partick.springcloudcourse.server.service;
 
+import com.partick.springcloudcourse.server.dto.ChapterDTO;
 import com.partick.springcloudcourse.server.dto.PageDTO;
 
 /**
@@ -11,4 +12,10 @@ public interface ChapterService {
      * @param pageDTO
      */
     void searchByPage(PageDTO pageDTO);
+
+    /**
+     * 保存大章接口
+     * @param chapterDTO
+     */
+    void save(ChapterDTO chapterDTO);
 }

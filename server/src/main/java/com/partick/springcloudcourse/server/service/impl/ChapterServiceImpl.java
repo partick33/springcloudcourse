@@ -7,6 +7,7 @@ import com.partick.springcloudcourse.server.dto.ChapterDTO;
 import com.partick.springcloudcourse.server.dto.PageDTO;
 import com.partick.springcloudcourse.server.mapper.ChapterMapper;
 import com.partick.springcloudcourse.server.service.ChapterService;
+import com.partick.springcloudcourse.server.util.UuidUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +45,18 @@ public class ChapterServiceImpl implements ChapterService {
         });
         pageDTO.setList(chapterDtoList);
 
+    }
+
+    /**
+     * 保存大章接口
+     *
+     * @param chapterDTO
+     */
+    @Override
+    public void save(ChapterDTO chapterDTO) {
+        Chapter chapter = new Chapter();
+        BeanUtils.copyProperties(chapterDTO, chapter);
+        chapter.setId(UuidUtil.getShortUuid());
+        chapterMapper.insert(chapter);
     }
 }

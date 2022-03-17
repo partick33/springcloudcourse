@@ -1,5 +1,6 @@
 package com.partick.springcloudcourse.system.controller;
 
+import com.partick.springcloudcourse.server.dto.ChapterDTO;
 import com.partick.springcloudcourse.server.dto.PageDTO;
 import com.partick.springcloudcourse.server.service.ChapterService;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,11 @@ public class ChapterController {
     @Resource
     private ChapterService chapterService;
 
+    /**
+     * 分页查询大章接口
+     * @param pageDTO
+     * @return
+     */
     @RequestMapping("/searchByPage")
     public PageDTO searchByPage(@RequestBody PageDTO pageDTO) {
         if (pageDTO.getPage() == null || pageDTO.getSize() == null) {
@@ -27,5 +33,14 @@ public class ChapterController {
         }
         chapterService.searchByPage(pageDTO);
         return pageDTO;
+    }
+
+    /**
+     * 保存大章接口
+     * @param chapterDTO
+     */
+    @RequestMapping("/save")
+    public void save(@RequestBody ChapterDTO chapterDTO) {
+        chapterService.save(chapterDTO);
     }
 }
