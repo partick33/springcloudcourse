@@ -120,6 +120,7 @@ export default {
         size: this.$refs.pagination.size
       }
       this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/searchByPage',data).then((response)=>{
+        response = response.data;
         this.chapters = response.data.list;
         this.$refs.pagination.render(data.page, response.data.total);
       })
@@ -127,8 +128,9 @@ export default {
     save() {
       this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/save',this.chapter).then((response)=>{
         console.log("保存大章列表结果：", response);
-        if (response.status === 200) {
+        if (response.data.success) {
           $("#form-modal").modal("hide");
+          this.list(1);
         }
       })
     }
